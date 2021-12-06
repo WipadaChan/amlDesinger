@@ -3,6 +3,7 @@ This component is a Naive Bayse Score and Evaluation. After you train the model 
 
 ## Parameter:
 Below are inputs parameter for Naive Bayse Score and Evaluation:
+
 <img src="../image/Score-Evaluate.png" alt="drawing" width="500"/>
 
 1. Action Type: user can choose between **Score Only** or **Socre and Evaluate**. It will get dataframe and model path as inputs in case you choose Score and Evaluate. If you choose score only, you can give only model path.
