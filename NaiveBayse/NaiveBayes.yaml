@@ -1,0 +1,64 @@
+#  This is a tutorial component spec yaml file for XGBRegressor.
+#  For more details, please refer to https://aka.ms/azure-ml-component-specs
+$schema: http://azureml/sdk-2-0/CommandComponent.json
+name: Naive_Bayes_Train
+version: 0.1.0
+display_name: Naive Bayes Classifier Train
+type: CommandComponent
+isDeterministic: false
+inputs:
+  Training_Data:
+    type: DataFrameDirectory
+    optional: false
+  Lable_Col:
+    type: String
+    optional: false
+    description: Lable column in the dataset.
+  Model_FileName:
+    type: String
+    optional: false
+    description: Name of the model file.
+  Model_Type:
+    type: Enum
+    default: 1
+    description: Name of a certain model:MultinomialNB, BernoulliNB
+    enum: ['MultinomialNB', 'BernoulliNB']
+  Alpha:
+    type: Float
+    default: 1.0
+    optional: false
+    description: Additive (Laplace/Lidstone) smoothing parameter (0 for no smoothing).
+  Fit_prior:
+    type: boolean
+    default: true
+    optional: false
+    description: Whether to learn class prior probabilities or not. If false, a uniform prior will be used.
+outputs:
+  Model_Path:
+    type: AnyDirectory
+command: >-
+  python NaiveBayes.py --Training_Data {inputs.Training_Data} --Model_FileName {inputs.Model_FileName} 
+  --Lable_Col {inputs.Lable_Col} --Model_Type {inputs.Model_Type} --Alpha {inputs.Alpha}
+  --Fit_prior {inputs.Fit_prior} --Model_Path {outputs.Model_Path} 
+environment:
+  docker:
+    image: mcr.microsoft.com/azureml/intelmpi2018.3-ubuntu16.04
+  conda:
+    conda_dependencies:
+      name: project_environment
+      channels:
+      - defaults
+      dependencies:
+      - python=3.7.6
+      - pip=20.2
+      - pip:
+        - azureml-sdk==0.1.0.*
+        - azureml-designer-core==0.0.54
+        - azureml-dataset-runtime[fuse,pandas]
+        - --index-url https://azuremlsdktestpypi.azureedge.net/dev/aml/office/134157926D8F
+        - --extra-index-url https://pypi.org/simple
+        - pyarrow
+        - pandas==1.2.0
+        - scikit-learn
+        - numpy
+  os: Linux

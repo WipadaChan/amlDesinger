@@ -1,0 +1,67 @@
+#  This is a tutorial component spec yaml file for Multinomial Naive Bayes.
+#  For more details, please refer to https://aka.ms/azure-ml-component-specs
+$schema: http://azureml/sdk-2-0/CommandComponent.json
+name: Naive_Bayes_Evaluation_score
+version: 0.0.5
+display_name: Naive Bayes Classifier Score and Evaluate
+type: CommandComponent
+is_deterministic: false
+tags:
+  model: 'Naive Bayes Evaluation'
+  version: '0.1'
+  python: '3.7.6'
+inputs:
+  Evaluation_Data:
+    type: DataFrameDirectory
+    optional: false
+    description: Evaluation dataset.
+  Action_Type:
+    type: Enum
+    optional: false
+    defaults: 1
+    description: Select Action Type
+    enum: ['Score And Evaluate', 'Score Only']
+  Lable_Col:
+    type: String
+    optional: false
+    description: Lable column in the dataset. If for Score only, please enter None. 
+  Model_Path:
+    type: AnyDirectory
+    optional: false
+    description: Path where contains model file.
+  Model_FileName:
+    type: String
+    optional: false
+    description: Name of the model file.
+outputs:
+  Evaluation_Output:
+    name: Results dataset
+    type: DataFrameDirectory
+    description: Dataset containing Predict results rows
+command: >-
+  python EvalMultinomialNB.py 
+  --Evaluation_Data {inputs.Evaluation_Data} --Lable_Col {inputs.Lable_Col}  --Action_Type {inputs.Action_Type}
+  --Model_Path {inputs.Model_Path} --Model_FileName {inputs.Model_FileName}
+  --Evaluation_Output {outputs.Evaluation_Output} 
+environment:
+  docker:
+    image: mcr.microsoft.com/azureml/intelmpi2018.3-ubuntu16.04
+  conda:
+    conda_dependencies:
+      name: project_environment
+      channels:
+      - defaults
+      dependencies:
+      - python=3.7.6
+      - pip=20.2
+      - pip:
+        - azureml-sdk==0.1.0.*
+        - azureml-designer-core==0.0.54
+        - azureml-dataset-runtime[fuse,pandas]
+        - --index-url https://azuremlsdktestpypi.azureedge.net/dev/aml/office/134157926D8F
+        - --extra-index-url https://pypi.org/simple
+        - pyarrow
+        - pandas==1.2.0
+        - scikit-learn
+        - numpy
+  os: Linux
