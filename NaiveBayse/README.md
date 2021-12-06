@@ -1,7 +1,7 @@
 # Azure ML Designer Custom Component: Naive Bayse Train
 This component is a Naive Bayse Train for Text classification. This step require input datarame that contains text column and label column (as numeric type).
 Below is screen short of input exaple:
-![alt text](./image/inputExample.png "Overview Naive Bayse Example") 
+![alt text](../image/inputExample.png "Overview Naive Bayse Example") 
 
 ## Naive Bayse Train:
 In the train step will get input dataframe that contains text column and label column. This train step allow user to select 2 types of algorithm: **MultinomialNB** and **BernoulliNB**. As this will use with text classification there are 2 additional step in training pipeline that consist of **CountVectorizer** and **TfidfTransformer**. 
@@ -15,7 +15,7 @@ For creating Custome component there are 2 mains files that required:
 
 ## YAML input Port and Parameter UI:
 Port & Parameters between UI and Yaml Spec. From component UI, there are 2 types of inputs/outputs: Ports and Parameters. When you use DataFrameDirectory or AnyDirectory as an input/output type, it will show as port. When you use basic type, like integer, float or string, it will show in parameters right panel. 
-![alt text](./image/inputParameter.png "Input Port and Parameter") 
+![alt text](../image/inputParameter.png "Input Port and Parameter") 
 
 In Python Code you can define variable to get parameter from UI
 ```python
@@ -34,7 +34,7 @@ args = parser.parse_args()
 ## Dropdown Box UI for user select option:
 In case you want user to select an option as dropdown in parameter UI. For example in this train step, I allows user to choose algorithm between **MultinomialNB** and **BernoulliNB**. You can define in YAML file with data type Enum as below example.
 
-![alt text](./image/dropdownlist.png "Dropdown list Option") 
+![alt text](../image/dropdownlist.png "Dropdown list Option") 
 
 When get this type of parameter simple get as string type:
 
