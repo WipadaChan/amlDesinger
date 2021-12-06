@@ -1,13 +1,14 @@
 # Azure ML Designer Custom Component: Naive Bayse Train
-This component is a Naive Bayse Train for Text classification. This step require input datarame that contains text column and label column (as numeric type).
-Below is screen short of input exaple:
-<img src="../image/inputExample.png " alt="drawing" width="500"/>
-
-## Naive Bayse Train:
-In the train step will get input dataframe that contains text column and label column. This train step allow user to select 2 types of algorithm: **MultinomialNB** and **BernoulliNB**. As this will use with text classification there are 2 additional step in training pipeline that consist of **CountVectorizer** and **TfidfTransformer**. 
+This component is a Naive Bayse Train for Text classification. In the train step will get input dataframe that contains text column and label column. This train step allow user to select 2 types of algorithm: **MultinomialNB** and **BernoulliNB**. As this will use with text classification there are 2 additional step in training pipeline that consist of **CountVectorizer** and **TfidfTransformer**. 
 Once training is done it will save the training pipeline in pickle format as the ModelFileName given in UI parameter. 
 
-## Parameter 
+## Input Example:
+This step require input datarame that contains text column and label column (as numeric type).
+Below is screen short of input exaple:
+
+<img src="../image/inputExample.png " alt="drawing" width="500"/>
+
+## Parameter:
 For creating Custome component there are 2 mains files that required:
 1. YAML file that define schema for input and output that will use to create UI where user can interact with. For detail Schema spec, [please refer to schema reference here](https://docs.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command) 
 
