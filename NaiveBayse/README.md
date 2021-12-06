@@ -1,7 +1,7 @@
 # Azure ML Designer Custom Component: Naive Bayse Train
 This component is a Naive Bayse Train for Text classification. This step require input datarame that contains text column and label column (as numeric type).
 Below is screen short of input exaple:
-![alt text](../image/inputExample.png "Overview Naive Bayse Example") 
+<img src="../image/inputExample.png " alt="drawing" width="500"/>
 
 ## Naive Bayse Train:
 In the train step will get input dataframe that contains text column and label column. This train step allow user to select 2 types of algorithm: **MultinomialNB** and **BernoulliNB**. As this will use with text classification there are 2 additional step in training pipeline that consist of **CountVectorizer** and **TfidfTransformer**. 
