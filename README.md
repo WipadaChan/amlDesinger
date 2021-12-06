@@ -11,5 +11,6 @@ In Scoring and Evaluation step user can select to choose between perform both sc
 
 
 ## References:
+* [How to Install Custom Component](https://github.com/Azure/AzureMachineLearningGallery/blob/main/tutorial/tutorial1-use-existing-components.md)
 * [What is an Azure Machine Learning component (preview)?](https://docs.microsoft.com/en-us/azure/machine-learning/concept-component) 
 * [CLI (v2) command component YAML schema](https://docs.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command) 
